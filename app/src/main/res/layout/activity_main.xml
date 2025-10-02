@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <LinearLayout
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/main"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+        <!-- Fondo con imagen y overlay -->
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="300dp">
@@ -16,13 +17,13 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:src="@drawable/login"
-                android:scaleType="centerCrop"/>
+                android:scaleType="centerCrop"
+                android:src="@drawable/login"/>
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="#88000000" />
+                android:background="#88000000"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -34,6 +35,7 @@
                 android:layout_gravity="center"/>
         </FrameLayout>
 
+        <!-- Contenedor de login -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -41,42 +43,50 @@
             android:padding="16dp"
             android:gravity="center_horizontal">
 
+            <!-- Texto descriptivo -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Inicia sesión para continuar"
-                android:textSize="16dp"
+                android:textSize="16sp"
                 android:layout_marginTop="20dp"
-                android:layout_marginBottom="20dp"/>
+                android:textAlignment="center"/>
 
+            <!-- EditText Usuario -->
             <EditText
+                android:id="@+id/etUsuario"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Usuario"
-                android:inputType="text"
+                android:inputType="textPersonName"
+                android:layout_marginTop="20dp"
                 android:padding="12dp"
-                android:textColor="@color/black"
-                android:textColorHint="#88000000"
-                android:background="@drawable/edittext_fondo"/>
+                android:background="@drawable/edittext_fondo"
+                android:textColor="@android:color/black"
+                android:textColorHint="#88000000"/>
 
+            <!-- EditText Contraseña -->
             <EditText
+                android:id="@+id/etPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Contraseña"
-                android:inputType="text"
+                android:inputType="textPassword"
                 android:layout_marginTop="12dp"
                 android:padding="12dp"
-                android:textColor="@color/black"
-                android:textColorHint="#88000000"
-                android:background="@drawable/edittext_fondo"/>
+                android:background="@drawable/edittext_fondo"
+                android:textColor="@android:color/black"
+                android:textColorHint="#88000000"/>
 
-             <Button
-                 android:layout_width="match_parent"
-                 android:layout_height="wrap_content"
-                 android:backgroundTint="@color/black"
-                 android:text="Iniciar Sesión"
-                 android:layout_marginTop="30dp"/>
-
+            <!-- Botón Login -->
+            <Button
+                android:id="@+id/btnLogin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Iniciar sesión"
+                android:backgroundTint="@color/black"
+                android:textColor="@android:color/white"
+                android:layout_marginTop="30dp"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
@@ -84,19 +94,16 @@
                 android:gravity="center"
                 android:background="#CCCCCC"
                 android:textSize="20sp"
-                android:layout_marginTop="30dp"/>
+                android:layout_marginTop="20dp"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
-                android:text="Bloque de prueba"
+                android:text="Bloque de prueba 2"
                 android:gravity="center"
-                android:background="#CCCCCC"
+                android:background="#AAAAAA"
                 android:textSize="20sp"
-                android:layout_marginTop="30dp"/>
-
-
+                android:layout_marginTop="20dp"/>
         </LinearLayout>
-
     </LinearLayout>
 </ScrollView>
