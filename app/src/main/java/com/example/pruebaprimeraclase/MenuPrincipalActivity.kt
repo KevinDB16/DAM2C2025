@@ -2,10 +2,12 @@ package com.example.pruebaprimeraclase
 
 import android.os.Bundle
 import android.widget.Button
+import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 
 
@@ -19,6 +21,37 @@ class MenuPrincipalActivity : AppCompatActivity() {
 
         Snackbar.make(findViewById(android.R.id.content), "Sesión iniciada...", Snackbar.LENGTH_LONG)
             .show()
+
+        val rvLista = findViewById<RecyclerView>(R.id.rvLista)
+        rvLista.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(this)
+
+        val datos = mutableListOf(
+            "Heladera", "Lavaropa", "Secaropa", "Tostadora",
+            "Heladera", "Lavaropa", "Secaropa", "Tostadora",
+            "Heladera", "Lavaropa", "Secaropa", "Tostadora",
+            "Heladera", "Lavaropa", "Secaropa", "Tostadora"
+        )
+
+        val adapter = DatoAdapter(datos)
+        rvLista.adapter = adapter
+
+        val btnAgregar = findViewById<Button>(R.id.btnAgregar)
+        btnAgregar.setOnClickListener{
+            val input = EditText(this)
+            AlertDialog.Builder(this)
+                .setTitle("Nuevo Producto")
+                .setMessage("Ingrese el nombre del producto")
+                .setView(input)
+                .setPositiveButton("Agregar") {_,_ ->
+                    val nuevoProducto = input.text.toString()
+                    if(nuevoProducto.isNotEmpty()){
+                        datos.add(nuevoProducto)
+                        adapter.notifyItemInserted(datos.size - 1)
+                    }
+                }
+                .setNegativeButton("Cancelar", null)
+                .show()
+        }
 
         val btnSalir = findViewById<Button>(R.id.btnSalir)
         btnSalir.setOnClickListener {
