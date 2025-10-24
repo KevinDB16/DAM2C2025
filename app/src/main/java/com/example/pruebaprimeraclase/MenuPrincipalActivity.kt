@@ -25,12 +25,8 @@ class MenuPrincipalActivity : AppCompatActivity() {
         val rvLista = findViewById<RecyclerView>(R.id.rvLista)
         rvLista.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(this)
 
-        val datos = mutableListOf(
-            "Heladera", "Lavaropa", "Secaropa", "Tostadora",
-            "Heladera", "Lavaropa", "Secaropa", "Tostadora",
-            "Heladera", "Lavaropa", "Secaropa", "Tostadora",
-            "Heladera", "Lavaropa", "Secaropa", "Tostadora"
-        )
+        val dbHelper = DBHelper(this)
+        val datos = dbHelper.obtenerProductos().toMutableList()
 
         val adapter = DatoAdapter(datos)
         rvLista.adapter = adapter
@@ -45,6 +41,7 @@ class MenuPrincipalActivity : AppCompatActivity() {
                 .setPositiveButton("Agregar") {_,_ ->
                     val nuevoProducto = input.text.toString()
                     if(nuevoProducto.isNotEmpty()){
+                        dbHelper.insertarProducto(nuevoProducto)
                         datos.add(nuevoProducto)
                         adapter.notifyItemInserted(datos.size - 1)
                     }
